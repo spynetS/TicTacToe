@@ -67,9 +67,9 @@ public class TicTacToe extends JPanel {
     }
 
     private void GameOver(Container.Form winner) {   if(winner!= Container.Form.n)
-            System.out.println("Winner is "+winner);
+            Main.winnerLabel.setText("Winner is "+winner);
         else
-            System.out.println("Draw");
+            Main.winnerLabel.setText("It's a draw");
         InitializeColumns();
         InitializeRows();
         repaint();
