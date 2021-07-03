@@ -14,7 +14,7 @@ public class TicTacToe extends JPanel {
     public TicTacToe(JFrame frame)
     {
         this.frame = frame;
-        InitializeColums();
+        InitializeColumns();
         InitializeRows();
         addMouseListener(new MouseListener() {
             @Override
@@ -44,11 +44,9 @@ public class TicTacToe extends JPanel {
         });
 
     }
-    private void InitializeColums()
-    {
+    private void InitializeColumns() {
         columns.clear();
-        for(int i = 0; i< 3;i++)
-        {
+        for(int i = 0; i< 3;i++) {
             ArrayList<Container> a = new ArrayList<>();
             a.add(null);
             a.add(null);
@@ -56,11 +54,10 @@ public class TicTacToe extends JPanel {
             columns.add(a);
         }
     }
-    private void InitializeRows()
-    {
+
+    private void InitializeRows() {
         rows.clear();
-        for(int i = 0; i< 3;i++)
-        {
+        for(int i = 0; i< 3;i++) {
             ArrayList<Container> a = new ArrayList<>();
             a.add(null);
             a.add(null);
@@ -68,65 +65,51 @@ public class TicTacToe extends JPanel {
             rows.add(a);
         }
     }
-    private void GameOver(Container.Form winner)
-    {   if(winner!= Container.Form.n)
+
+    private void GameOver(Container.Form winner) {   if(winner!= Container.Form.n)
             System.out.println("Winner is "+winner);
         else
             System.out.println("Draw");
-        InitializeColums();
+        InitializeColumns();
         InitializeRows();
         repaint();
     }
 
-    private boolean HasWon()
-    {
-        int widthD =  frame.getWidth()/3;
+    private boolean HasWon() {
         //Check the rows
-        for(int i = 0; i< rows.size();i++)
-        {
+        for(int i = 0; i< rows.size();i++) {
             int sumx=0;
             int sumo =0;
-            for(int ii = 0; ii< rows.get(i).size();ii++)
-            {
-                if(rows.get(i).get(ii)!=null&&rows.get(i).get(ii).getForm()== Container.Form.x)
-                {
+            for(int ii = 0; ii< rows.get(i).size();ii++) {
+                if(rows.get(i).get(ii)!=null&&rows.get(i).get(ii).getForm()== Container.Form.x) {
                     sumx++;
                 }
-                else if(rows.get(i).get(ii)!=null&&rows.get(i).get(ii).getForm()==Container.Form.o)
-                {
+                else if(rows.get(i).get(ii)!=null&&rows.get(i).get(ii).getForm()==Container.Form.o) {
                     sumo++;
                 }
-                if(sumo==3)
-                {
+                if(sumo==3) {
                     GameOver(Container.Form.o);
                 }
-                else if(sumx==3)
-                {
+                else if(sumx==3) {
                     GameOver(Container.Form.x);
                 }
             }
         }
         //Checks the columns
-        for(int i = 0; i< columns.size(); i++)
-        {
+        for(int i = 0; i< columns.size(); i++) {
             int sumx=0;
             int sumo =0;
-            for(int ii = 0; ii< columns.get(i).size(); ii++)
-            {
-                if(columns.get(i).get(ii)!=null&& columns.get(i).get(ii).getForm()== Container.Form.x)
-                {
+            for(int ii = 0; ii< columns.get(i).size(); ii++) {
+                if(columns.get(i).get(ii)!=null&& columns.get(i).get(ii).getForm()== Container.Form.x) {
                     sumx++;
                 }
-                else if(columns.get(i).get(ii)!=null&& columns.get(i).get(ii).getForm()==Container.Form.o)
-                {
+                else if(columns.get(i).get(ii)!=null&& columns.get(i).get(ii).getForm()==Container.Form.o) {
                     sumo++;
                 }
-                if(sumo==3)
-                {
+                if(sumo==3) {
                     GameOver(Container.Form.o);
                 }
-                else if(sumx==3)
-                {
+                else if(sumx==3) {
                     GameOver(Container.Form.x);
                 }
             }
@@ -135,56 +118,46 @@ public class TicTacToe extends JPanel {
         int sumo =0;
         //Check diaginal \
         for(int i = 0; i< rows.size(); i++) {
-            if(rows.get(i).get(i)!=null&&rows.get(i).get(i).getForm()== Container.Form.x)
-            {
+            if(rows.get(i).get(i)!=null&&rows.get(i).get(i).getForm()== Container.Form.x) {
                 sumx++;
                 System.out.println(rows.get(i).get(i).getForm());
             }
-            else if(rows.get(i).get(i)!=null&&rows.get(i).get(i).getForm()== Container.Form.o)
-            {
+            else if(rows.get(i).get(i)!=null&&rows.get(i).get(i).getForm()== Container.Form.o) {
                 System.out.println(rows.get(i).get(i).getForm());
                 sumo++;
             }
-            if(sumo==3)
-            {
+            if(sumo==3) {
                 GameOver(Container.Form.o);
             }
-            else if(sumx==3)
-            {
+            else if(sumx==3) {
                 GameOver(Container.Form.x);
             }
         }
-    //Check diaginal /
+        //Check diaginal /
         sumo = 0;
         sumx = 0;
         for(int i = 0; i< rows.size(); i++) {
-            if(rows.get(i).get(2-i)!=null&&rows.get(i).get(2-i).getForm()== Container.Form.x)
-            {
+            if(rows.get(i).get(2-i)!=null&&rows.get(i).get(2-i).getForm()== Container.Form.x) {
                 sumx++;
                 System.out.println(rows.get(i).get(2-i).getForm());
             }
-            else if(rows.get(i).get(2-i)!=null&&rows.get(i).get(2-i).getForm()== Container.Form.o)
-            {
+            else if(rows.get(i).get(2-i)!=null&&rows.get(i).get(2-i).getForm()== Container.Form.o) {
                 System.out.println(rows.get(i).get(2-i).getForm());
                 sumo++;
             }
-            if(sumo==3)
-            {
+            if(sumo==3) {
                 GameOver(Container.Form.o);
             }
-            else if(sumx==3)
-            {
+            else if(sumx==3) {
                 GameOver(Container.Form.x);
             }
         }
 
         int partsum=0;
-        for(int i = 0; i< rows.size();i++)
-        {
-            for(int ii = 0; ii< rows.get(i).size();ii++)
-            {
-               if(rows.get(i).get(ii)!=null)
-               {
+        //Check if the board is full
+        for(int i = 0; i< rows.size();i++) {
+            for(int ii = 0; ii< rows.get(i).size();ii++) {
+               if(rows.get(i).get(ii)!=null) {
                    partsum++;
                }
                if(partsum==9)
@@ -194,7 +167,6 @@ public class TicTacToe extends JPanel {
 
         return false;
     }
-
 
     private int[] GetContainer(int x, int y) {
         int heightD = frame.getHeight()/3;
@@ -241,10 +213,9 @@ public class TicTacToe extends JPanel {
         return null;
     }
 
-    public boolean canSet(Container newContainer)
-    {
+    public boolean canSet(Container newContainer) {
         for(int i = 0; i<rows.get(newContainer.y).size();i++){
-           if(rows.get(newContainer.y).get(newContainer.x)==null){
+            if(rows.get(newContainer.y).get(newContainer.x)==null){
                return true;
            }
         }
@@ -252,35 +223,34 @@ public class TicTacToe extends JPanel {
     }
 
     private void SetContainer(int x, int y) {
-         Container newContainer = new Container();
+        Container newContainer = new Container();
         newContainer.x=GetContainer(x,y)[0]/(frame.getWidth()/3);
         newContainer.y=GetContainer(x,y)[1]/(frame.getHeight()/3);
         newContainer.setShow(true);
         if(canSet(newContainer)){
-        if(turn%2==0)
-            newContainer.setForm(Container.Form.x);// sets to x
-        else
-            newContainer.setForm(Container.Form.o); // sets to o
+            if(turn%2==0)
+                newContainer.setForm(Container.Form.x);// sets to x
+            else
+                newContainer.setForm(Container.Form.o); // sets to o
 
-        for(int i = 0; i<rows.get(newContainer.y).size();i++){
-            rows.get(newContainer.y).set(newContainer.x,newContainer);
-        }
-
-        for(int i = 0; i<columns.get(newContainer.x).size();i++){
-            columns.get(newContainer.x).set(newContainer.y,newContainer);
-        }
-
-        turn++;
-        HasWon();
+            //Adds to the row array
+            for(int i = 0; i<rows.get(newContainer.y).size();i++){
+                rows.get(newContainer.y).set(newContainer.x,newContainer);
+            }
+            //Adds to the columns array
+            for(int i = 0; i<columns.get(newContainer.x).size();i++){
+                columns.get(newContainer.x).set(newContainer.y,newContainer);
+            }
+            turn++;
+            HasWon();
         }
         repaint();
     }
 
     private void DrawGamePanel(Graphics g)
     {
-        Dimension frameD = new Dimension(frame.getSize());
-        int heightD = frameD.height/3-15;
-        int widthD = frameD.width/3;
+        int heightD = frame.getHeight()/3-15;
+        int widthD = frame.getWidth()/3;
         int x =0;
         int y = 0;
         for(int i =0;i<rows.size();i++)
@@ -308,8 +278,6 @@ public class TicTacToe extends JPanel {
             }
 
         }
-
-
     }
 
     @Override
